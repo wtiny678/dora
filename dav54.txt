@@ -1,51 +1,55 @@
 #BAR GRAPH 
+import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-x = np.array(["A", "B", "C", "D"])
-y = np.array([6, 8, 3, 10])
-plt.bar(x,y)
-plt.xlabel("X-axis")  
-plt.ylabel("Y-axis")  
-plt.title("Data")  
+data = {'Name': ['A', 'B', 'C', 'D', 'E'],
+        'Marks': [80, 70, 90, 60, 85]}
+df = pd.DataFrame(data)
+plt.bar(df['Name'], df['Marks'], edgecolor='black')
+plt.title('Bar Plot of Marks')
+plt.xlabel('Name')
+plt.ylabel('Marks')
 plt.show()
 
 
 #HISTOGRAM 
-
+import pandas as pd
 import matplotlib.pyplot as plt
-
-data = [10, 20, 20, 30, 30, 30, 40, 40, 50]
-
-plt.hist(data, bins=5, edgecolor='black')
-
-plt.xlabel("Values")
-plt.ylabel("Frequency")
-plt.title("Histogram")
-
+data = {'Marks': [45, 56, 67, 78, 89, 90, 67, 56, 78, 85]}
+df = pd.DataFrame(data)
+plt.hist(df['Marks'], bins=5, edgecolor='black')
+plt.title('Histogram of Marks')
+plt.xlabel('Marks')
+plt.ylabel('Frequency')
 plt.show()
+
+
+
 
 # LINE PLOT
+import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-x = np.array([1, 2, 3, 4])  
-y = x*2  
-plt.plot(x, y)  
-plt.xlabel("X-axis")  
-plt.ylabel("Y-axis")  
-plt.title("Data") 
-plt.show()  
+data = {'Year': [2021, 2022, 2023, 2024, 2025],
+        'Sales': [100, 200, 150, 300, 400]}
+df = pd.DataFrame(data)
+plt.plot(df['Year'], df['Sales'], marker='o')
+plt.title('Line Plot of Sales')
+plt.xlabel('Year')
+plt.ylabel('Sales')
+plt.show() 
+
+
 
 # SCATTER PLOT
+import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
-y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
-plt.scatter(x, y)
-plt.xlabel("X-axis")  
-plt.ylabel("Y-axis")  
-plt.title("Data") 
+data = {'Hours': [1, 2, 3, 4, 5],
+        'Marks': [30, 40, 50, 70, 90]}
+df = pd.DataFrame(data)
+plt.scatter(df['Hours'], df['Marks'])
+plt.title('Scatter Plot of Hours and Marks')
+plt.xlabel('Hours')
+plt.ylabel('Marks')
 plt.show()
-
 
 
 
@@ -64,6 +68,12 @@ print(df2)
 
 
 
+
+
+
+
+
+
 #GROUP BY 
 
 import pandas as pd
@@ -76,51 +86,4 @@ df = pd.DataFrame(data)
 print(df.groupby("model")["co2"].mean())
 
 
-
-
-
-
-
-
-
-
-
-
-#MERGE 
-import pandas as pd 
-data1 = pd.read_csv("D:/Data.csv")
-data2 = pd.read_csv("D:/csv/data2.csv")
-df = pd.DataFrame(data1,index=[0, 1, 2, 3])
-df1 = pd.DataFrame(data2, index=[2, 5, 6, 7])
-frames = [df, df1]
-res1 = pd.concat(frames)
-print(res1)
-
-print("Inner Join")
-res2 = pd.concat([df, df1], axis=1, join='inner')
-print(res2)
-
-print("Outer Join")
-res2 = pd.concat([df, df1], axis=1, join='outer')
-print(res2)
-
-print("Merging")
-res = pd.merge(df, df1, on='Sno')
-print(res)
-
-print("Left Merging")
-res = pd.merge(df, df1, how='left', on=['Sno','Rollno'])
-print(res)
-
-print("Right Merging")
-res = pd.merge(df, df1, how='right', on=['Sno','Rollno'])
-print(res)
-
-print("Outer Merging")
-res = pd.merge(df, df1, how='outer', on=['Sno','Rollno'])
-print(res)
-
-print("Inner Merging")
-res = pd.merge(df, df1, how='inner', on=['Sno','Rollno'])
-print(res)
 
